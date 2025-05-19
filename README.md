@@ -1,90 +1,116 @@
-<<<<<<< HEAD
-# Chat-with-pdf
-=======
-## Chat with Multiple PDFs using Google Gemini & FAISS
 
-Welcome to Chat with Multiple PDFs, a Streamlit web application that allows you to upload multiple PDF files, process them into searchable text chunks, and then interactively ask questions about the content using Google’s Gemini AI models. The app uses FAISS for efficient similarity search on vectorized documents.
+# 📄 Chat with Multiple PDFs using Google Gemini & FAISS
 
-Features
-Upload multiple PDFs at once and process them quickly
+**Chat with PDF** is a powerful Streamlit web app that lets you **interact with multiple PDFs** using **natural language**. Ask questions, get accurate answers, and explore your documents like never before — powered by **Google Gemini AI** and **FAISS**.
 
-Extract and chunk text intelligently from PDFs
+---
 
-Create vector embeddings of text chunks using Google Gemini embeddings
+## ✨ Features
 
-Store and retrieve embeddings efficiently using FAISS vector store
+* 📤 Upload **multiple PDFs** at once
+* 📚 **Extract** and **chunk** text from PDFs intelligently
+* 🔍 Generate **embeddings** using **Google Gemini**
+* ⚡ **FAISS vector store** for lightning-fast similarity search
+* 💬 Ask questions and get **AI-powered answers** from your documents
+* 🌐 Powered by **Google Gemini 2.0 Flash** via **LangChain**
+* 🧑‍💻 Clean and intuitive **Streamlit interface**
 
-Ask natural language questions about your PDF content and get detailed answers
+---
 
-Powered by the latest Google Gemini-2.0-flash language model for high-quality answers
+## 🛠 Installation
 
-Simple and intuitive Streamlit interface
+### 1. Clone the Repository
 
-Installation
-Clone the repository:
-
+```bash
 git clone https://github.com/MohdNematullah/Chat-with-pdf.git
 cd chat-with-multiple-pdfs
-Create and activate a virtual environment (recommended):
+```
 
+### 2. Create and Activate a Virtual Environment
+
+```bash
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+
+# Windows
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install required dependencies:
+venv\Scripts\activate
+```
 
+### 3. Install Required Dependencies
+
+```bash
 pip install -r requirements.txt
-Add your Google API key to a .env file in the root directory:
+```
 
-Google_Api_Key=google_api_key_here
-Usage
-Run the Streamlit app:
+### 4. Add Your Google API Key
 
+Create a `.env` file in the root directory:
+
+```
+Google_Api_Key=your_google_api_key_here
+```
+
+---
+
+## ▶️ Usage
+
+### Run the App
+
+```bash
 streamlit run app.py
-How to use the app:
-Use the sidebar to upload one or more PDF files.
+```
 
-Click the Submit & Process button to extract text and create vector embeddings.
+### How to Use
 
-Enter a question related to the PDF contents in the main text input box.
+1. Use the **sidebar** to upload one or more PDF files
+2. Click **Submit & Process** to extract and embed the content
+3. Ask a question in the main input box
+4. Get detailed answers based on your uploaded PDFs
 
-Get detailed answers from the AI model based on your PDFs.
+---
 
-Code Overview
-app.py — Main Streamlit app file
+## 🧩 Code Overview
 
-get_pdf_text() — Extracts text from uploaded PDFs using PyPDF2
+| File/Function                | Description                                      |
+| ---------------------------- | ------------------------------------------------ |
+| `app.py`                     | Main Streamlit app                               |
+| `get_pdf_text()`             | Extracts text from PDFs using `PyPDF2`           |
+| `get_text_chunks()`          | Splits text into small, overlapping chunks       |
+| `get_vector_store()`         | Builds and stores FAISS vector index from chunks |
+| `get_conversational_chain()` | Loads Google Gemini model chain using LangChain  |
+| `user_input()`               | Handles query input and AI responses             |
 
-get_text_chunks() — Splits long text into smaller overlapping chunks for better embedding
+> ✅ Uses `GoogleGenerativeAIEmbeddings` and `ChatGoogleGenerativeAI` from **LangChain + Google SDK**
 
-get_vector_store() — Creates FAISS vector store from text chunks and saves it locally
+---
 
-get_conversational_chain() — Creates an LLM chain for question answering using Google Gemini
+## 📦 Dependencies
 
-user_input() — Handles user queries by searching the vector store and getting answers
+* `streamlit`
+* `PyPDF2`
+* `langchain`
+* `faiss-cpu`
+* `google-generativeai`
+* `python-dotenv`
 
-Uses Google Generative AI Embeddings and ChatGoogleGenerativeAI models from langchain_google_genai
+---
 
-Dependencies
+## ⚠️ Notes
+
+* Make sure you have a valid **Google Generative AI API key** with proper quota
+* Large PDFs may take longer to process depending on size
+* The FAISS index is stored locally in the `faiss_index` folder for reusability
+
+---
+
+## 🤝 Contributing
+
+Open to feedback, ideas, and contributions!
+Feel free to open issues or submit pull requests — whether it’s improving performance, usability, or adding new features.
+
+---
 
 
-Streamlit
 
-PyPDF2
-
-LangChain
-
-FAISS
-
-Google Generative AI Python SDK
-
-python-dotenv
-
-Notes
-Make sure you have a valid Google Generative AI API key and proper quota to use the Gemini models.
-
-Large PDF files may take longer to process due to embedding and indexing.
-
-The FAISS index is saved locally in the faiss_index folder for reusability.
-
-Contributing
-Feel free to open issues or submit pull requests. Suggestions for improving usability, performance, or extending functionality are welcome!
->>>>>>> e519b5d (Initial commit: Add chat with multiple PDFs Streamlit app)
